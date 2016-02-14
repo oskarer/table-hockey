@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import { List } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
+import * as NewGameActions from '../actions/NewGameActions';
 import Counter from '../components/Counter';
 import Footer from '../components/Footer';
+import NewGame from '../components/NewGame';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -13,20 +15,18 @@ import Footer from '../components/Footer';
 export default class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    const { players, actions } = this.props;
     return (
-      <div className="main-app-container">
-        <div className="main-app-nav">Simple Redux Boilerplate</div>
-        {/* notice that we then pass those unpacked props into the Counter component */}
-        <Counter counter={counter} actions={actions} />
-        <Footer />
-      </div>
+      <NewGame players={players} actions={actions}/>
     );
   }
 }
 
+// <Counter counter={counter} actions={actions} />
+// <Footer />
+
 App.propTypes = {
-  counter: PropTypes.number.isRequired,
+  players: PropTypes.instanceOf(List),
   actions: PropTypes.object.isRequired
 };
 
@@ -37,7 +37,7 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    players: state.players
   };
 }
 
@@ -51,7 +51,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(NewGameActions, dispatch)
   };
 }
 
