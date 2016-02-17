@@ -3,8 +3,6 @@ import { List } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as NewGameActions from '../actions/NewGameActions';
-import Counter from '../components/Counter';
-import Footer from '../components/Footer';
 import NewGame from '../components/NewGame';
 
 /**
@@ -15,9 +13,9 @@ import NewGame from '../components/NewGame';
 export default class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { players, actions } = this.props;
+    const { players, games, actions } = this.props;
     return (
-      <NewGame players={players} actions={actions}/>
+      <NewGame players={players} games={games} actions={actions}/>
     );
   }
 }
@@ -26,6 +24,7 @@ export default class App extends Component {
 // <Footer />
 
 App.propTypes = {
+  games: PropTypes.number.isRequired,
   players: PropTypes.instanceOf(List),
   actions: PropTypes.object.isRequired
 };
@@ -37,6 +36,7 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
+    games: state.games,
     players: state.players
   };
 }

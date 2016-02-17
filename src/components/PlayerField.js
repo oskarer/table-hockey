@@ -4,20 +4,30 @@ export default class PlayerField extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.remove = this.remove.bind(this);
   }
   handleChange(event) {
-    const { player, personChanged } = this.props;
+    const { player, playerChanged } = this.props;
     const value = event.target.value;
-    personChanged(value, player.get('id'));
+    playerChanged(value, player.get('id'));
+  }
+  remove() {
+    const { player, removePlayer } = this.props;
+    removePlayer(player.get('id'));
   }
   render() {
     const { player } = this.props;
     return (
-      <input className="input"
-        type="text" placeholder="Text input"
-        value={player.get('value')}
-        onChange={this.handleChange}
-      />
+      <div>
+        <p className="control">
+          <input className="input"
+            type="text" placeholder="Text input"
+            value={player.get('name')}
+            onChange={this.handleChange}
+          />
+          <a onClick={this.remove}>X</a>
+        </p>
+      </div>
     );
   }
 }
@@ -25,5 +35,6 @@ export default class PlayerField extends Component {
 PlayerField.propTypes = {
   player: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  personChanged: PropTypes.func.isRequired
+  playerChanged: PropTypes.func.isRequired,
+  removePlayer: PropTypes.func.isRequired,
 };

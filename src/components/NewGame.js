@@ -1,37 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 import { List } from 'immutable';
 import PlayerField from './PlayerField';
+import GamesDropdown from './GamesDropdown';
 
 export default class NewGame extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   render() {
-    const { players, actions } = this.props;
-
+    const { games, players, actions } = this.props;
     const playerFields = players.map((player, index) => {
       return (<PlayerField key={index} player={player} index={index}
-        personChanged={actions.updateName}
+        playerChanged={actions.updateName} removePlayer={actions.removePlayer}
       />);
     });
     return (
       <div className="container">
         <div className="new-form">
           <h1 className="title">Spelare</h1>
-          <p className="control">
+
             {playerFields}
-            <a className="button">Lägg till</a>
-          </p>
+            <a className="button" onClick={actions.addPlayer}>Lägg till
+            </a>
           <hr />
           <h1 className="title">Antal spel</h1>
-          <p className="control">
-            <span className="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
-            </span>
-          </p>
+            <GamesDropdown games={games} onChange={actions.updateGames} />
           <hr />
           <h1 className="title">Möten</h1>
           <p className="control">
@@ -52,6 +45,7 @@ export default class NewGame extends Component {
 }
 
 NewGame.propTypes = {
+  games: PropTypes.number.isRequired,
   players: PropTypes.instanceOf(List),
   actions: PropTypes.object.isRequired
 };

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import players from './players';
+import games from './games';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -15,7 +16,8 @@ import players from './players';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  players, // you might be used to: counter: counter,
+  players,
+  games,
 });
 
 export default rootReducer;
