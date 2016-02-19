@@ -7,4 +7,6 @@
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const UPDATE_NAME = 'UPDATE_NAME';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
-export const UPDATE_GAMES = 'UPDATE_GAMES';
+export const SET_GAMES = 'SET_GAMES';
+export const SET_MATCHES = 'SET_MATCHES';
+export const START_GAME = 'START_GAME';

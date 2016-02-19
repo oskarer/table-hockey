@@ -2,7 +2,9 @@ import {
   UPDATE_NAME,
   ADD_PLAYER,
   REMOVE_PLAYER,
-  UPDATE_GAMES } from '../constants/ActionTypes';
+  SET_GAMES,
+  SET_MATCHES,
+  START_GAME } from '../constants/ActionTypes';
 
 export function updateName(text, id) {
   return {
@@ -25,9 +27,22 @@ export function removePlayer(id) {
   };
 }
 
-export function updateGames(number) {
+export function setGames(number) {
   return {
-    type: UPDATE_GAMES,
+    type: SET_GAMES,
     number
+  };
+}
+
+export function setMatches(number) {
+  return {
+    type: SET_MATCHES,
+    number
+  };
+}
+
+export function startGame() {
+  return {
+    type: START_GAME
   };
 }

@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import players from './players';
-import games from './games';
+import settings from './settings';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -16,8 +15,7 @@ import games from './games';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  players,
-  games,
+  settings
 });
 
 export default rootReducer;
