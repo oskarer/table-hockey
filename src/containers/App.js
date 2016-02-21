@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Map } from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as NewGameActions from '../actions/settingsActions';
+import * as settingsActions from '../actions/settingsActions';
 import Form from '../components/settings/Form';
 
 
@@ -28,7 +28,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(NewGameActions, dispatch)
+    actions: bindActionCreators(settingsActions, dispatch)
   };
 }
 

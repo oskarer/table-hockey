@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import _ from 'lodash';
 import {
   UPDATE_NAME,
   ADD_PLAYER,
@@ -7,8 +8,14 @@ import {
   SET_MATCHES,
   START_GAME } from '../constants/ActionTypes';
 const initialPlayers = [{
-  name: '',
+  name: 'Börje',
   id: 0
+}, {
+  name: 'Hans',
+  id: 1
+}, {
+  name: 'Kurt',
+  id: 2
 }];
 
 const initialState = Immutable.fromJS({
@@ -47,8 +54,6 @@ export default function (state = initialState, action) {
       return state.set('games', action.number);
     case SET_MATCHES:
       return state.set('matches', action.number);
-    case START_GAME:
-      return state.set('started', true);
     default:
       return state;
   }

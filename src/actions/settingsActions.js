@@ -3,8 +3,7 @@ import {
   ADD_PLAYER,
   REMOVE_PLAYER,
   SET_GAMES,
-  SET_MATCHES,
-  START_GAME } from '../constants/ActionTypes';
+  SET_MATCHES } from '../constants/actionTypes';
 
 export function updateName(text, id) {
   return {
@@ -38,11 +37,5 @@ export function setMatches(number) {
   return {
     type: SET_MATCHES,
     number
-  };
-}
-
-export function startGame() {
-  return {
-    type: START_GAME
   };
 }
